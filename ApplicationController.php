@@ -158,8 +158,8 @@ class ApplicationController extends BaseController
         }
 
         //Changes XSS-уязвимость
-        $this->posts->addPost($this->authorization->getCurrentUserId(), strip_tags($title),
-            strip_tags($text));
+        $this->posts->addPost(htmlentities($this->authorization->getCurrentUserId(), $title,
+            $text));
         //End of changes
         return $this->redirect('index');
     }
